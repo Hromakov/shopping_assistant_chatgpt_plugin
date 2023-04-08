@@ -1,0 +1,22 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Shopping assistant plugin",
+  "name_for_model": "Shopping assistant plugin",
+  "description_for_human": "Retrieves the shopping list and store laytout to assist in shopping",
+  "description_for_model": "Use this plugin to retrieve the shopping list and store layout, which you then will use to help the user find and purchase the products.",
+  "auth": {
+    "type": "service_http",
+    "authorization_type": "bearer",
+    "verification_tokens": {
+      "openai": "758e9ef7984b415688972d749f8aa58e"
+    }
+  },
+  "api": {
+    "type": "openapi",
+    "url": "http://localhost:3333/openapi.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "http://localhost:3333/logo.png",
+  "contact_email": "support@example.com",
+  "legal_info_url": "http://www.example.com/legal"
+}

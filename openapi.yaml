@@ -1,0 +1,32 @@
+openapi: 3.0.1
+info:
+  title: Shopping list plugin
+  description: Use this plugin to retrieve the shopping list and store layout, which you then will use to help the user find and purchase the products.
+  version: 'v1'
+servers:
+  - url: http://localhost:3333
+paths:
+  /todos:
+    get:
+      operationId: getShoppingListAndStoreLayout
+      summary: Get the shopping list and a description of the store layout
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getShoppingListAndStoreLayoutResponse'
+components:
+  schemas:
+    getShoppingListAndStoreLayoutResponse:
+      type: object
+      properties:
+        shoppingList:
+          type: array
+          items:
+            type: string
+          description: The items on the shopping list
+        storeLayout:
+          type: string
+          description: A description of the store layout
