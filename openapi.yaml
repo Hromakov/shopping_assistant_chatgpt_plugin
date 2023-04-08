@@ -4,9 +4,9 @@ info:
   description: Use this plugin to retrieve the shopping list and store layout, which you then will use to help the user find and purchase the products.
   version: 'v1'
 servers:
-  - url: http://localhost:3333
+  - url: https://shoppingassistantchatgptplugin.vovakhromakov.repl.co
 paths:
-  /todos:
+  /getShoppingListAndStoreLayout:
     get:
       operationId: getShoppingListAndStoreLayout
       summary: Get the shopping list and a description of the store layout

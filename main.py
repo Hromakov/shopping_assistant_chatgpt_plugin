@@ -18,8 +18,8 @@ def assert_auth_header(req):
 
 
 
-@app.get("/getShoppingListAndStoreLayoutResponse/<string:username>")
-async def get_shop_list_and_layout(username):
+@app.get("/getShoppingListAndStoreLayout")
+async def get_shop_list_and_layout():
     assert_auth_header(quart.request)
     #return quart.Response(response=json.dumps(_TODOS.get(username, [])), status=200)
     return quart.Response(response="hello", status=200)
