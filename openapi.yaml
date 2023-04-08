@@ -35,8 +35,10 @@ components:
                 description: Whether the item has been purchased or not, please disregard purchased products, and do not mention them to the user.
             required:
               - name
+              - isPurchased
           description: The items on the shopping list
         storeLayout:
           type: string
           description: A description of the store layout
+
 

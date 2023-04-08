@@ -50,15 +50,6 @@ firebase_admin.initialize_app(cred, {
 ref = db.reference('shoppingList')
 
 
-data=ref.get()
-print(data)
-print('---')
-print(json.dumps(data))
-#print('---')
-#print(json.loads(data))
-#print('---')
-#print(jsonify(json.loads(data)))
-
 
 def assert_auth_header(req):
     assert req.headers.get(
@@ -66,10 +57,18 @@ def assert_auth_header(req):
 
 
 store_layout_description = """
-Fruits then vegetables
-sd89324-fo[ew]
-
+Продукты в магазине расположены в группах. Они пронумерованы в последовательности по дальности, от самой ближней (группа 1) до самой дальней группы (группа 9). Все продукты внутри одной группы находятся в одном и том же месте.
+Самая ближняя группа 1: пельмени, пицца, замороженная вишня;
+Группа 2: овощи, фрукты, бананы, картофель;
+Группа 3: зелень, перец, квашеная капуста;
+Группа 4: селедка, хамон, колбаса, куриные ножки, яйца;
+Группа 5: каши, каша "пять зерен", макароны, рис;
+Группа 6: хлебные изделия;
+Группа 7: рыбные продукты;
+Группа 8: молочные продукты;
+Самая дальняя группа 9: предметы гигиены.
 """
+
 
 
 
@@ -77,20 +76,25 @@ sd89324-fo[ew]
 @app.get("/getShoppingListAndStoreLayout")
 async def get_shop_list_and_layout():
     assert_auth_header(quart.request)
-    #return quart.Response(response=json.dumps(_TODOS.get(username, [])), status=200)
-    #return quart.Response(response="hello", status=200)
+    
     # Retrieve the data
     shopping_list_data = ref.get()
-    
-    # Combine the shopping list data and store layout description into a dictionary
+
+    # Create a new list with only the required properties
+    filtered_shopping_list = []
+    for item in shopping_list_data.values():
+        filtered_shopping_list.append({
+            "isPurchased": item["isPurchased"],
+            "name": item["name"]
+        })
+
+    # Combine the filtered shopping list data and store layout description into a dictionary
     combined_data = {
-        "shopping_list": json.dumps(shopping_list_data),
+        "shopping_list": json.dumps(filtered_shopping_list),
         "store_layout": store_layout_description
     }
 
-  
     return quart.Response(response=json.dumps(combined_data), status=200)
-
 
 @app.get("/logo.png")
 async def plugin_logo():

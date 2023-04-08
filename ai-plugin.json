@@ -3,12 +3,12 @@
   "name_for_human": "Shopping assistant plugin",
   "name_for_model": "Shopping_assistant_plugin",
   "description_for_human": "Retrieves the shopping list and store laytout to assist in shopping",
-  "description_for_model": "Use this plugin to retrieve the shopping list and store layout, which you then will use to help the user find and purchase the products.",
+  "description_for_model": "This plugin returns the list of products and store layout. Your task is to provide user with a list of products to buy ordered in the most efficient way order according to the given store layout. Do not say anything else except the list of products - no descriptions, no explanations, no reasoning, only give the list of products and that's it (unless there are no products). Note that the positionId returned in the plugin response should be ignored as it is meaningless. Sometimes the user will tell you that he is in a specific part of the store, and you will give him products to buy there. Use your own logic and reasoning to order those products which are missing from the layout, because similar products are often placed together.",
   "auth": {
     "type": "service_http",
     "authorization_type": "bearer",
     "verification_tokens": {
-      "openai": "a8ba5202fb1d42ee9264ea2ec0c59fc9"
+      "openai": "4c4ad45d818241998a5567012f97914e"
     }
   },
   "api": {
